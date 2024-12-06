@@ -21,11 +21,27 @@ body::before {
     height: 100%;
     position: absolute;
     z-index: -1;
-    background-image: url('../img/wood.jpg');
-    background-repeat: repeat-x repeat-y;
+    background-color: brown;
+    /* background-image: url('../img/wood.jpg'); */
+    /* background-repeat: repeat-x repeat-y; */
     overflow: hidden;
     filter: blur(1px) saturate(60%) brightness(90%);
 }
+.themeht {
+    color: white;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    font-family: monospace;
+    font-size: 16px;
+}
+
+.themeht a {
+    color: yellow;
+    list-style: none;
+    cursor: pointer;
+}
+
 #footer {
     flex-grow: 1;
     display: flex;
@@ -34,13 +50,14 @@ body::before {
 }
 #button {
     border-radius: 50%;
-    border: 6px solid #9d8549;
-    background-color: #c5a968;
-    -webkit-transition: -webkit-transform .15s ease-in;
+    border: 6px solid #ffffff;
+    background-color: #509962;
+    -webkit-transition: -webkit-transform .5s ease-in;
     transition: transform .15s ease-in;
     width: 80px;
     height: 80px;
     cursor: pointer;
+    color: yellow;
 }
 #button i {
     font-size: 40px;

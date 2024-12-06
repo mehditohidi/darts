@@ -89,6 +89,19 @@
     }
     ;
 
+  
+    var scoreText = new PIXI.Text('Score: 0', {
+      fontFamily: 'Arial',
+      fontSize: 24,
+      fontWeight: 'bold',
+      fill: '#ffffff'
+  });
+  scoreText.x = 10; // Adjust x position
+  scoreText.y = 10; // Adjust y position
+  stage.addChild(scoreText);
+  
+  
+  
   function setup() {
 
     drawDartboard();
@@ -195,7 +208,7 @@
         fontFamily : 'sans-serif',
         fontSize : '24px',
         fontWeight : 'bold',
-        fill : '#000000'
+        fill : '#ffffff'
       });
       var numberPoint = polarToCartesian(centerX, centerY, radius + 20, (angleStep * i) - (Math.PI / 2));
       number.x = numberPoint[0];
@@ -258,14 +271,14 @@
 
   function startXAxis() {
     lineX.visible = true;
-    lineXTween = c.slide(lineX, BOARD_SIZE, 0, 120, 'smoothstep', true);
+    lineXTween = c.slide(lineX, BOARD_SIZE, 0, 80, 'smoothstep', true);
     in_x_axis = true;
   }
 
   function startYAxis() {
     in_x_axis = false;
     lineY.visible = true;
-    lineYTween = c.slide(lineY, 0, BOARD_SIZE, 120, 'smoothstep', true);
+    lineYTween = c.slide(lineY, 0, BOARD_SIZE, 80, 'smoothstep', true);
     in_y_axis = true;
   }
 
@@ -310,25 +323,27 @@
       textStyle = textStyleMiss;
 
     if (score > 0) {
-      message = score + '!';
-      textStyle = textStyleHit;
-      var originalColor = target.graphicsData[0].fillColor;
-      var shape = target.graphicsData[0].shape;
-      
-      target.clear();
-      target.beginFill(colorHit);
-      target.drawShape(shape);
-      target.endFill();
+    message = score + '!';
+    textStyle = textStyleHit;
+    var originalColor = target.graphicsData[0].fillColor;
+    var shape = target.graphicsData[0].shape;
 
-      setTimeout(function() {
+    target.clear();
+    target.beginFill(colorHit);
+    target.drawShape(shape);
+    target.endFill();
+
+    setTimeout(function() {
         target.clear();
         target.beginFill(originalColor);
         target.drawShape(shape);
         target.endFill();
-      }, 100);
+    }, 100);
 
-      totalScore += score;
-    }
+    totalScore += score;
+    scoreText.text = 'Score: ' + totalScore; // Update the score text
+}
+
 
     var text = new PIXI.Text(message, textStyle);
     text.x = BOARD_SIZE / 2;
